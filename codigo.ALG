@@ -15,7 +15,7 @@ tipo
    fimregistro
 Var
    //Variaveis SETOR RH
-   A:vetor[1..99] de cad_funcionarios // o vetor pode ou n„o ser totalmente preenchido
+   A:vetor[1..99] de cad_funcionarios // o vetor pode ou n√£o ser totalmente preenchido
    cpf,irpf:real
    resp,opcao:caractere
    nm_funcionario:caractere
@@ -34,24 +34,24 @@ inicio
    escreval("===========================")
    escreval("           MENU            ")
    escreval("===========================")
-   escreval("1 - Cadastrar funcion·rios.")
-   escreval("2 - RelatÛrio do funcion·rios.")
-   escreval("3 - Calcular sal·rio do funcion·rio.")
-   escreval("4 - Exibir contra-cheque do funcion·rio.")
+   escreval("1 - Cadastrar funcion√°rios.")
+   escreval("2 - Relat√≥rio do funcion√°rios.")
+   escreval("3 - Calcular sal√°rio do funcion√°rio.")
+   escreval("4 - Exibir contra-cheque do funcion√°rio.")
    escreval("5 - Voltar ao MENU PRINCIPAL")
    escreval("6 - Calculando")
    escreval("7 - Sair.")
-   escreva("Escolha uma opÁ„o: ")
+   escreva("Escolha uma op√ß√£o: ")
    leia(opcao)
 fimprocedimento
-//Essa funÁ„o, altera o cargo de inteiro para caractere
+//Essa fun√ß√£o, altera o cargo de inteiro para caractere
 funcao trocando_cargos (v1:inteiro):caractere
 var
    cargo:caractere
 inicio
    escolha (v1)
    caso 1
-      cargo <- "Oper·rio"
+      cargo <- "Oper√°rio"
    caso 2
       cargo <- "Supervisor"
    caso 3
@@ -61,14 +61,14 @@ inicio
    fimescolha
    retorne cargo
 fimfuncao
-//FunÁ„o para calcular o sal·rio dos funcion·rios
+//Fun√ß√£o para calcular o sal√°rio dos funcion√°rios
 funcao calculando_salario (v1:real):real
-var    //VarÌaveis locais
+var    //Var√≠aveis locais
    hs_extra,sal_temp,sal_extra,salario:real
    kms:inteiro
 inicio
    escolha (A[j].cargo)
-      //A carga horaria mensal È definida em 192hs, qualquer hora a mais passa a ser extra
+      //A carga horaria mensal √© definida em 192hs, qualquer hora a mais passa a ser extra
    caso 1
       se (horas_de_trabalho > 192) entao
          hs_extra <- horas_de_trabalho - 192
@@ -90,7 +90,7 @@ inicio
       senao
          A[j].salario <- horas_de_trabalho * 40
       fimse
-      //Gerente e diretor, n„o tem direito a horas extras.
+      //Gerente e diretor, n√£o tem direito a horas extras.
    caso 3
       A[j].salario <- horas_de_trabalho * 60
 
@@ -100,23 +100,23 @@ inicio
 
    retorne A[j].salario
 fimfuncao
-//Cadastro de funcion·rios
+//Cadastro de funcion√°rios
 procedimento cadastro_funcionarios ()
 inicio
-   repita //Preferencia ao repita, pois n„o vamos sabemos quantos funcion·rios ser„o cadastrados.
+   repita //Preferencia ao repita, pois n√£o vamos sabemos quantos funcion√°rios ser√£o cadastrados.
       limpatela
-      i <- i + 1 // Toda vez que um funcion·rio for cadastrado a variavel i sempre recebendo 1
+      i <- i + 1 // Toda vez que um funcion√°rio for cadastrado a variavel i sempre recebendo 1
       escreval("================================")
-      escreval("Cadastrando o",i,"∞ funcion·rio.")
+      escreval("Cadastrando o",i,"¬∞ funcion√°rio.")
       escreval("================================")
       escreval("")
-      escreva("Insira o NOME do FUNCION¡RIO: ")
+      escreva("Insira o NOME do FUNCION√ÅRIO: ")
       leia(A[i].nome_funcio)
 
-      repita //Loop caso o CPF j· tenha sido registrado.
-         escreva("Insira o CPF do funcion·rio: ")
+      repita //Loop caso o CPF j√° tenha sido registrado.
+         escreva("Insira o CPF do funcion√°rio: ")
          leia(cpf)
-         //Verificando se j· existe algum cpf igual no registro
+         //Verificando se j√° existe algum cpf igual no registro
          para c de 1 ate i faca
             se (cpf = A[c].cpf) entao
                k <- c
@@ -126,9 +126,9 @@ inicio
          se (k = 0) entao
             k <- i + 1
          fimse
-         //Se o cpf j· tiver cadastrado o usu·rio dever· digitar um diferente
+         //Se o cpf j√° tiver cadastrado o usu√°rio dever√° digitar um diferente
          se (cpf = A[k].cpf) entao
-            escreval("CPF J¡ CADASTRADO")
+            escreval("CPF J√Å CADASTRADO")
             resp <- "N"
          senao
             resp <- "S"
@@ -137,27 +137,27 @@ inicio
       A[i].cpf <- cpf //Atribuindo o CPF ao registro CPF
       //Fim CPF.
 
-      escreva("Insira o RG do funcion·rio: ")
+      escreva("Insira o RG do funcion√°rio: ")
       leia(A[i].rg)
 
-      escreva("Insira o ENDERE«O do funcion·rio: ")
+      escreva("Insira o ENDERE√áO do funcion√°rio: ")
       leia(A[i].end_funcio)
 
-      escreva("Insira o TELEFONE do funcion·rio: ")
+      escreva("Insira o TELEFONE do funcion√°rio: ")
       leia(A[i].telefone)
 
-      escreva("Insira a QUANTIDADE de FILHOS do funcion·rio: ")
+      escreva("Insira a QUANTIDADE de FILHOS do funcion√°rio: ")
       leia(A[i].qnt_filhos)
 
-      repita //Loop caso o usu·rio forneÁa um cargo inexistente
-         escreval("Escolha o cargo do funcion·rio de 1 a 4:")
-         escreval("1 - Oper·rio.")
+      repita //Loop caso o usu√°rio forne√ßa um cargo inexistente
+         escreval("Escolha o cargo do funcion√°rio de 1 a 4:")
+         escreval("1 - Oper√°rio.")
          escreval("2 - Supervisor.")
          escreval("3 - Gerente.")
          escreval("4 - Diretor.")
          leia(A[i].cargo)
          se (A[i].cargo >= 1) e (A[i].cargo <= 4) entao //Controle de dados
-            escreval("Funcion·rio cadastrado.")
+            escreval("Funcion√°rio cadastrado.")
             resp <- "s"
          senao
             escreval("Cargo Inexistente.")
@@ -166,16 +166,16 @@ inicio
       ate (resp = "s")
       //Fim cargo.
 
-      situacao <- verdadeiro //SituaÁ„o automaticamente passa a ser verdadeira, quando um funcion·rio È cadastrado
+      situacao <- verdadeiro //Situa√ß√£o automaticamente passa a ser verdadeira, quando um funcion√°rio √© cadastrado
       escreval("")
       escreva("Continuar cadastrando? [S/N]")
       leia(resp)
-      ordenamento //Sempre que um funcion·rio È cadastrado, È realizado um ordenamento por ordem alfabÈtica.
+      ordenamento //Sempre que um funcion√°rio √© cadastrado, √© realizado um ordenamento por ordem alfab√©tica.
       escreval("")
    ate (resp = "n")
 fimprocedimento
 
-procedimento ordenamento () //Procedimento para ordenaÁ„o
+procedimento ordenamento () //Procedimento para ordena√ß√£o
 var  //Variaveis locais
    k,aux_cargo,aux_qnt_filhos,mes:inteiro
    aux,aux_r,aux_end,aux_telefone:caractere
@@ -189,7 +189,7 @@ inicio
             A[k].nome_funcio <- A[j].nome_funcio
             A[j].nome_funcio  <- aux
 
-            //Ordenando todas as outras informaÁıes
+            //Ordenando todas as outras informa√ß√µes
             aux_cpf <- A[k].cpf
             A[k].cpf <- A[j].cpf
             A[j].cpf <- aux_cpf
@@ -230,7 +230,7 @@ inicio
    fimpara
 fimprocedimento
 
-procedimento pergunta () //Como existem v·rios limpatela, procedimento para exibir as informaÁıes na tela do usu·rio atÈ ele apertar qualquer tecla.
+procedimento pergunta () //Como existem v√°rios limpatela, procedimento para exibir as informa√ß√µes na tela do usu√°rio at√© ele apertar qualquer tecla.
 inicio
    escreval("=====================")
    escreval("Aperte qualquer tecla")
@@ -268,16 +268,16 @@ inicio
    fimse
 
    //================== IRPF ===================
-   //IRPF Desconto de 7,5% me sal·rios de 1.903,98 a 2.826,65
+   //IRPF Desconto de 7,5% me sal√°rios de 1.903,98 a 2.826,65
    se (A[j].salario > 1903.98) e (A[j].salario < 2826.65) entao
       irpf <- A[j].salario * 0.075
       irpfpor <- "7,5%"
-      //IRPF Desconto de 15% me sal·rios de 2.826,66 a 3.751,05
+      //IRPF Desconto de 15% me sal√°rios de 2.826,66 a 3.751,05
    senao
       se (A[j].salario > 2826.66) e (A[j].salario < 3751.05) entao
          irpf <- A[j].salario * 0.15
          irpfpor <- "15%"
-         //IRPF Desconto de 22% me sal·rios de 3.751,06
+         //IRPF Desconto de 22% me sal√°rios de 3.751,06
       senao
          se (A[j].salario > 3751.06) entao
             irpf <- A[j].salario * 0.22
@@ -286,47 +286,47 @@ inicio
       fimse
    fimse
 
-   //Calculando sal·rio liquido
+   //Calculando sal√°rio liquido
    salario_liquido <- A[j].salario - desconto - irpf
 
 fimprocedimento
-//Procedimento para verificar se o nome digitado pelo usu·rio existe, ou caso exista nomes no registro iguais
+//Procedimento para verificar se o nome digitado pelo usu√°rio existe, ou caso exista nomes no registro iguais
 procedimento verificador_funcionarios ()
 inicio
    m <- 0
-   situacao3 <- falso  //Essas duas situaÁıes servem de controle no caso 3
+   situacao3 <- falso  //Essas duas situa√ß√µes servem de controle no caso 3
    situacao4 <- falso
 
-   para c de 1 ate i faca   //O para È de 1 ate i, o i representa a quantidade de funcion·rios cadastrados
-      se (nm_funcionario = A[c].nome_funcio) entao //O loop verifica em todo o vetor, se existe algum registro com o nome igual ao digitado pelo usu·rio.
-         j <- c  // J recebe a posiÁ„o de c, assim sabemos em qual posiÁ„o ta cadastrado o funcion·rio
-         m <- m + 1 // M recebe 1 toda vez que essa condiÁ„o for atendida, dessa forma sabemos se existe mais de um funcion·rio com o mesmo nome
+   para c de 1 ate i faca   //O para √© de 1 ate i, o i representa a quantidade de funcion√°rios cadastrados
+      se (nm_funcionario = A[c].nome_funcio) entao //O loop verifica em todo o vetor, se existe algum registro com o nome igual ao digitado pelo usu√°rio.
+         j <- c  // J recebe a posi√ß√£o de c, assim sabemos em qual posi√ß√£o ta cadastrado o funcion√°rio
+         m <- m + 1 // M recebe 1 toda vez que essa condi√ß√£o for atendida, dessa forma sabemos se existe mais de um funcion√°rio com o mesmo nome
       fimse
    fimpara
 
-   se (j = 0) entao //Essa condiÁ„o È iniciada caso o usu·rio tenha digitado um nome que n„o existe no registro, entao o j passa a receber um valor maior que o vetor, pois ocorreria erro caso fosse 0
+   se (j = 0) entao //Essa condi√ß√£o √© iniciada caso o usu√°rio tenha digitado um nome que n√£o existe no registro, entao o j passa a receber um valor maior que o vetor, pois ocorreria erro caso fosse 0
       j <- i + 1
    fimse
 
-   se (nm_funcionario = A[j].nome_funcio) entao //Essa condiÁ„o foi feita para deixar claro se existe ou n„o um funcion·rio com o nome digitado pelo usu·rio.
+   se (nm_funcionario = A[j].nome_funcio) entao //Essa condi√ß√£o foi feita para deixar claro se existe ou n√£o um funcion√°rio com o nome digitado pelo usu√°rio.
       situacao3 <- verdadeiro  //Se existir, a situacao3 passa a ser verdadeira, ela serve de controle no caso 3
    senao
-      escreval("Funcion·rio n„o localizado.") //Caso n„o exista, È exibido esta mensagem
+      escreval("Funcion√°rio n√£o localizado.") //Caso n√£o exista, √© exibido esta mensagem
       pergunta
    fimse
 
-   se (m = 1) entao //No caso 3, È necess·rio que a situacao3 e 4 sejam verdadeiras, para entrar
+   se (m = 1) entao //No caso 3, √© necess√°rio que a situacao3 e 4 sejam verdadeiras, para entrar
       situacao4 <- verdadeiro
    fimse
 
-   se (m > 1) entao //Aqui, caso o nome digitado pelo usu·rio aparece mais de uma vez no registro, entramos nessa condiÁ„o
-      escreval("Foram encontrados mais de um funcion·rio com esse nome.")
+   se (m > 1) entao //Aqui, caso o nome digitado pelo usu√°rio aparece mais de uma vez no registro, entramos nessa condi√ß√£o
+      escreval("Foram encontrados mais de um funcion√°rio com esse nome.")
       escreva("Digite o CPF: ")
-      leia(cpf) //A forma de validar os funcion·rios passa a ser pelo CPF
+      leia(cpf) //A forma de validar os funcion√°rios passa a ser pelo CPF
 
-      para c de 1 ate i faca //O loop aqui faz a mesma coisa, percorre todo o registro e verificar se tem cpf no registro igual ao digitado pelo usu·rio.
+      para c de 1 ate i faca //O loop aqui faz a mesma coisa, percorre todo o registro e verificar se tem cpf no registro igual ao digitado pelo usu√°rio.
          se (cpf = A[c].cpf) entao
-            j <- c //Se isso acontecer o j recebe a posiÁ„o
+            j <- c //Se isso acontecer o j recebe a posi√ß√£o
          fimse
       fimpara
 
@@ -334,17 +334,17 @@ inicio
          j <- i + 1
       fimse
 
-      se (cpf = A[j].cpf) entao //Essa condiÁ„o È feita para verificar se o CPF digitado realmente existe
+      se (cpf = A[j].cpf) entao //Essa condi√ß√£o √© feita para verificar se o CPF digitado realmente existe
          situacao4 <- verdadeiro //Existindo a variavel situacao4 passa a ser verdadeira, ela serve de controle no caso 3
       senao
-         escreval("CPF n„o coincide com o nome do funcion·rio.")
+         escreval("CPF n√£o coincide com o nome do funcion√°rio.")
          pergunta
       fimse
    fimse
 fimprocedimento
 
 Inicio
-   //ComeÁo do cÛdigo do RH
+   //Come√ßo do c√≥digo do RH
    repita
       menu
       escolha(opcao)
@@ -352,30 +352,30 @@ Inicio
          cadastro_funcionarios
 
       caso "2"
-         se (situacao = falso) entao  // Se n„o existir nenhum funcion·rio cadastrado, n„o È possÌvel usar o caso 2
-            escreval("Necess·rio cadastrar pelo menos um funcion·rio")
+         se (situacao = falso) entao  // Se n√£o existir nenhum funcion√°rio cadastrado, n√£o √© poss√≠vel usar o caso 2
+            escreval("Necess√°rio cadastrar pelo menos um funcion√°rio")
             pergunta
          senao
             ordenamento
             limpatela
             escreval("========================")
-            escreval("Listagem de funcion·rios")
+            escreval("Listagem de funcion√°rios")
             escreval("========================")
-            para c de 1 ate i faca   // O i È a quantidade de funcion·rio cadastrados.
-               escreval(c,"∞ FUNCION¡RIO.")
+            para c de 1 ate i faca   // O i √© a quantidade de funcion√°rio cadastrados.
+               escreval(c,"¬∞ FUNCION√ÅRIO.")
                escreval("NOME: ",A[c].nome_funcio)
                escreval("CPF:",A[c].cpf)
                escreval("RG:",A[c].rg)
-               escreval("EndereÁo: ",A[c].end_funcio)
+               escreval("Endere√ßo: ",A[c].end_funcio)
                escreval("Telefone: ",A[c].telefone)
                escreval("Quantidade de filhos:",A[c].qnt_filhos)
-               troca <- trocando_cargos (A[c].cargo) //FunÁ„o de inteiro para caractere
+               troca <- trocando_cargos (A[c].cargo) //Fun√ß√£o de inteiro para caractere
                escreval("Cargo: ",troca)
-               se (A[c].salario <> 0) entao     //Salario sÛ ser· exibido, caso tenha
+               se (A[c].salario <> 0) entao     //Salario s√≥ ser√° exibido, caso tenha
                   escreval("Salario:",A[c].salario)
                fimse
                se (A[c].salario <= 1903.98) entao
-                  escreval("N„o paga IMPOSTO DE RENDA")
+                  escreval("N√£o paga IMPOSTO DE RENDA")
                senao
                   escreval("Paga IMPOSTO DE RENDA")
                fimse
@@ -385,34 +385,34 @@ Inicio
          fimse
 
       caso "3"
-         se (situacao = falso) entao // Se n„o existir nenhum funcion·rio cadastrado, n„o È possÌvel usar o caso 3
-            escreval("Necess·rio cadastrar pelo menos um funcion·rio")
+         se (situacao = falso) entao // Se n√£o existir nenhum funcion√°rio cadastrado, n√£o √© poss√≠vel usar o caso 3
+            escreval("Necess√°rio cadastrar pelo menos um funcion√°rio")
             pergunta
          senao
             repita
                limpatela
                escreval("========================")
-               escreval("   Calculando sal·rio   ")
+               escreval("   Calculando sal√°rio   ")
                escreval("========================")
-               escreva("Informe o nome do funcion·rio: ")
+               escreva("Informe o nome do funcion√°rio: ")
                leia(nm_funcionario)
-               verificador_funcionarios  //Puxa o procedimento para fazer as verificaÁıes.
+               verificador_funcionarios  //Puxa o procedimento para fazer as verifica√ß√µes.
                se (situacao3 = verdadeiro) e (situacao4 = verdadeiro) entao  //A situacao 3 e 4, servem de controle, c
                   se (nm_funcionario = A[j].nome_funcio) ou (cpf = A[j].cpf) entao //Se o nome digitado tiver sido registrado
-                     troca <- trocando_cargos (A[j].cargo) //Exibindo o cargo do funcion·rio, usando a FunÁ„o que troca cargo
+                     troca <- trocando_cargos (A[j].cargo) //Exibindo o cargo do funcion√°rio, usando a Fun√ß√£o que troca cargo
                      escreval("Cargo: ",troca)
-                     escreva("Quantas horas foram trabalhadas? ")  //Calculando sal·rio
+                     escreva("Quantas horas foram trabalhadas? ")  //Calculando sal√°rio
                      leia(horas_de_trabalho)
                      escreval("")
-                     A[j].salario <- calculando_salario (horas_de_trabalho) //Puxamos a funÁ„o para calcular o sal·rio, horas extras e etc...
-                     escreval("O funcion·rio ",A[j].nome_funcio," trabalhou",horas_de_trabalho," horas, portanto seu sal·rio È de R$",A[j].salario)
-                     //Esse calculo sÛ funcionar· caso seja calculado 12x o sal·rio
-                     A[j].mes <- A[j].mes + 1 // Toda vez que o sal·rio do funcion·rio for calculado, esse registro recebe 1
+                     A[j].salario <- calculando_salario (horas_de_trabalho) //Puxamos a fun√ß√£o para calcular o sal√°rio, horas extras e etc...
+                     escreval("O funcion√°rio ",A[j].nome_funcio," trabalhou",horas_de_trabalho," horas, portanto seu sal√°rio √© de R$",A[j].salario)
+                     //Esse calculo s√≥ funcionar√° caso seja calculado 12x o sal√°rio
+                     A[j].mes <- A[j].mes + 1 // Toda vez que o sal√°rio do funcion√°rio for calculado, esse registro recebe 1
                      A[j].salario_anual <- A[j].salario_anual + A[j].salario //
                      contracheque
-                     //A intenÁ„o dele È saber quanto o funcion·rio pagar· de IRPF, anualmente.
-                     situacao2 <- verdadeiro //SituaÁ„o 2 passa a ser verdadeiro.
-                     escreva("Continuar calculando sal·rios? [S/N]")
+                     //A inten√ß√£o dele √© saber quanto o funcion√°rio pagar√° de IRPF, anualmente.
+                     situacao2 <- verdadeiro //Situa√ß√£o 2 passa a ser verdadeiro.
+                     escreva("Continuar calculando sal√°rios? [S/N]")
                      leia(resp)
                   fimse
                fimse
@@ -421,17 +421,17 @@ Inicio
          fimse
 
       caso "4"
-         se (situacao = falso) ou (situacao2 = falso) entao //AlÈm de ter cadastrado um funcion·rio, È necess·rio ter calculado o sal·rio, para poder usar esse caso.
+         se (situacao = falso) ou (situacao2 = falso) entao //Al√©m de ter cadastrado um funcion√°rio, √© necess√°rio ter calculado o sal√°rio, para poder usar esse caso.
             escreval("")
-            escreval("Necess·rio cadastrar pelo menos um funcion·rio")
-            escreval("E ter calculado o sal·rio.")
+            escreval("Necess√°rio cadastrar pelo menos um funcion√°rio")
+            escreval("E ter calculado o sal√°rio.")
             pergunta
          senao
             escreval("=====================")
-            escreval("Sal·rio LIQUIDO")
+            escreval("Sal√°rio LIQUIDO")
             escreval("=====================")
             escreval("")
-            escreva("Informe o nome do funcion·rio: ")
+            escreva("Informe o nome do funcion√°rio: ")
             leia(nm_funcionario)
 
             verificador_funcionarios
@@ -439,31 +439,31 @@ Inicio
             se (situacao3 = verdadeiro) e (situacao4 = verdadeiro) entao
                se (nm_funcionario = A[j].nome_funcio) ou (cpf = A[j].cpf) entao
                   contracheque
-                  escreval("Sal·rio BRUTO R$",A[j].salario)
+                  escreval("Sal√°rio BRUTO R$",A[j].salario)
                   escreval("Desconto de ",por," INSS R$",desconto)
                   escreval("Desconto de ",irpfpor," IRPF R$",irpf)
-                  escreval("Sal·rio LÕQUIDO R$",salario_liquido)
+                  escreval("Sal√°rio L√çQUIDO R$",salario_liquido)
                fimse
                pergunta
             fimse
          fimse
 
       caso "6"
-         se (situacao = falso) ou (situacao2 = falso) entao //AlÈm de ter cadastrado um funcion·rio, È necess·rio ter calculado o sal·rio, para poder usar esse caso.
+         se (situacao = falso) ou (situacao2 = falso) entao //Al√©m de ter cadastrado um funcion√°rio, √© necess√°rio ter calculado o sal√°rio, para poder usar esse caso.
             escreval("")
-            escreval("Necess·rio cadastrar pelo menos um funcion·rio")
-            escreval("E ter calculado o sal·rio.")
+            escreval("Necess√°rio cadastrar pelo menos um funcion√°rio")
+            escreval("E ter calculado o sal√°rio.")
             pergunta
          senao
             limpatela
             escreval("===================")
-            escreval("Sal·rios calculados")
+            escreval("Sal√°rios calculados")
             escreval("===================")
-            escreva("Informe o nome do funcion·rio: ")
+            escreva("Informe o nome do funcion√°rio: ")
             leia(nm_funcionario)
             verificador_funcionarios
-            escreval("J· foram calculados ",A[j].mes," SAL¡RIOS")
-            escreval("Totalizando o sal·rio BRUTO de R$",A[j].salario_anual)
+            escreval("J√° foram calculados ",A[j].mes," SAL√ÅRIOS")
+            escreval("Totalizando o sal√°rio BRUTO de R$",A[j].salario_anual)
             pergunta
          fimse
 
@@ -472,7 +472,7 @@ Inicio
          opcao <- "l"
       outrocaso
          limpatela
-         escreval("OpÁ„o invalida.")
+         escreval("Op√ß√£o invalida.")
          pergunta
       fimescolha
    ate (opcao = "l")
